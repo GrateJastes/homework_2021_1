@@ -62,13 +62,18 @@ QUnit.module('Тестируем функцию get', function () {
 			}
 		};
 
+		assert.throws(() => get(), new TypeError('Incorrect type'));
+		assert.throws(() => get(object), new TypeError('Incorrect type'));
+		assert.throws(() => get('object', '.foo'), new TypeError('Incorrect type'));
+		assert.throws(() => get(object, object), new TypeError('Incorrect type'));
+
+		assert.throws(() => get(object, ''), new Error('Property path invalid'));
+		assert.throws(() => get(object, ' '), new Error('Property path invalid'));
+		assert.throws(() => get(object, 'foo'), new Error('Property path invalid'));
+
+		assert.strictEqual(get(object, '.'), undefined)
 		assert.strictEqual(get(object, '.foo.'), undefined)
-		assert.strictEqual(get(object, 'foo'), undefined)
 		assert.strictEqual(get(object, '.deep..nested'), undefined)
 		assert.strictEqual(get(object, '.bar.val'), undefined)
-		assert.strictEqual(get(object, '.'), undefined)
-		assert.strictEqual(get(object, ''), undefined)
-		assert.strictEqual(get(object, ' '), undefined)
-
 	})
 });
