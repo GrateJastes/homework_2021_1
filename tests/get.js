@@ -5,16 +5,16 @@ QUnit.module('Тестируем функцию get', function () {
 		const object = {
 			foo: 'bar',
 			deep: {
-				hested: {
+				nested: {
 					field: 'baz'
 				}
 			}
 		};
 
 		assert.strictEqual(get(object, '.foo'), object.foo);
-		assert.strictEqual(get(object, '.deep.hested.field'), object.deep.hested.field);
+		assert.strictEqual(get(object, '.deep.nested.field'), object.deep.nested.field);
 
-		assert.deepEqual(get(object, '.deep.hested'), object.deep.hested);
+		assert.deepEqual(get(object, '.deep.nested'), object.deep.nested);
 		assert.deepEqual(get(object, '.deep'), object.deep);
 		assert.deepEqual(get(object, '.'), object);
 	});
