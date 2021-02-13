@@ -14,6 +14,9 @@ const get = (object, pathString) => {
     if (pathString[0] !== '.')
         throw Error('Property path invalid');
 
+    if (pathString === '.')
+        return object;
+
     return pathString.split('.')
         .slice(1)
         .reduce((resultProperty, propertyName) => {
