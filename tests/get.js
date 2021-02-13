@@ -16,9 +16,6 @@ QUnit.module('Тестируем функцию get', function () {
 
 		assert.deepEqual(get(object, '.deep.nested'), object.deep.nested);
 		assert.deepEqual(get(object, '.deep'), object.deep);
-
-		// assert.deepEqual(get(object, '.'), object);
-		// because I don't think it's an appropriate behavior
 	});
 
 	QUnit.test('get работает правильно c массивами', function (assert) {
